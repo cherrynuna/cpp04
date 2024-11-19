@@ -2,7 +2,7 @@
 
 WrongCat::WrongCat(void) : WrongAnimal("WrongCat")
 {
-	std::cout << "Default WrongCat constructor called" << std::endl;
+	std::cout << "WrongCat constructor called" << std::endl;
 }
 
 WrongCat::WrongCat(const WrongCat& obj) : WrongAnimal(obj)

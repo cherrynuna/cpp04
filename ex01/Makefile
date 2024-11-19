@@ -1,8 +1,9 @@
-SRCS	=	main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
+SRCS	=	main.cpp Animal.cpp Dog.cpp Cat.cpp \
+			WrongAnimal.cpp WrongCat.cpp Brain.cpp
 
 OBJS	=	${SRCS:.cpp=.o}
 
-CC		=	c++ -Wall -Wextra -Werror -std=c++98 #-g -fsanitize=address
+CC		=	c++ -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
 
 NAME	=	a.out
 

@@ -23,12 +23,12 @@ int main()
 	i->makeSound(); //will output the cat sound!
 	j->makeSound();
 	meta->makeSound();
-
+	std::cout << std::endl;
 	const WrongAnimal*	bad = new WrongAnimal();
 	const WrongAnimal*	k = new WrongCat();
 	k->makeSound();
 	bad->makeSound();
-
+	std::cout << std::endl;
 	delete meta;
 	delete j;
 	delete i;

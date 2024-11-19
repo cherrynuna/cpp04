@@ -2,7 +2,7 @@
 
 Animal::Animal()
 {//std::string은 기본적으로 빈 문자열로 초기화
-	std::cout << "Default Animal constructor called" << std::endl;
+	std::cout << "Animal constructor called" << std::endl;
 }
 
 Animal::Animal(std::string type) : type(type)

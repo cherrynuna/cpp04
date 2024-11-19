@@ -2,7 +2,7 @@
 
 Cat::Cat(void) : Animal("Cat")
 {
-	std::cout << "Default Cat constructor called" << std::endl;
+	std::cout << "Cat constructor called" << std::endl;
 }
 
 Cat::Cat(const Cat& obj) : Animal(obj)

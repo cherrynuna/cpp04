@@ -2,7 +2,7 @@
 
 WrongAnimal::WrongAnimal()
 {//std::string은 기본적으로 빈 문자열로 초기화
-	std::cout << "Default WrongAnimal constructor called" << std::endl;
+	std::cout << "WrongAnimal constructor called" << std::endl;
 }
 
 WrongAnimal::WrongAnimal(std::string type) : type(type)

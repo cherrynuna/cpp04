@@ -2,7 +2,7 @@
 
 Dog::Dog(void) : Animal("Dog")
 {
-	std::cout << "Default Dog constructor called" << std::endl;
+	std::cout << "Dog constructor called" << std::endl;
 }
 
 Dog::Dog(const Dog& obj) : Animal(obj)
