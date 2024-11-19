@@ -2,7 +2,7 @@
 
 Animal::Animal()
 {//std::string은 기본적으로 빈 문자열로 초기화
-	std::cout << "Animal constructor called" << std::endl;
+	std::cout << "Default Animal constructor called" << std::endl;
 }
 
 Animal::Animal(std::string type) : type(type)
@@ -19,7 +19,6 @@ Animal&	Animal::operator=(const Animal& obj)
 {
 	if (this != &obj)
 	{
-		this->type = obj.type;
 		std::cout << "Animal copy assignment operator called" << std::endl;
 	}
 	return (*this);

@@ -19,9 +19,6 @@ class Animal
 		virtual void	makeSound() const;
 };
 
-
-
-
 //Constructors and destructors of each class must display specific messages. Don’t use the same message for all classes.
 
 #endif

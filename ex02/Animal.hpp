@@ -16,7 +16,7 @@ class Animal
 
 		const std::string	&getType() const;
 
-		virtual void	makeSound() const;
+		virtual void	makeSound() const = 0;
 };
 
 //Constructors and destructors of each class must display specific messages. Don’t use the same message for all classes.
