@@ -33,7 +33,10 @@ Character&	Character::operator=(const Character& obj)
 
 Character::~Character(void)
 {
-
+	for (int i = 0; i < 4; i++)
+	{
+		delete this->slot[i];
+	}
 }
 
 std::string const&	Character::getName() const
@@ -45,7 +48,7 @@ void	Character::equip(AMateria* m)//full inventory, don’t do anything
 {
 	int	idx = 0;
 
-	if (idx < 4)
+	while (idx < 4)
 	{
 		if (this->slot[idx] == NULL)
 		{
@@ -58,12 +61,13 @@ void	Character::equip(AMateria* m)//full inventory, don’t do anything
 
 void	Character::unequip(int idx)//an unexisting Materia, don’t do anything
 {
-	if (0 <= idx && idx < 4)
+	if (this->slot[idx])
+		this->slot[idx] = NULL;
 		//NOT delete the Materia, 주소 따로 저장하든가 해서 leak 막아라
 }
 
 void	Character::use(int idx, ICharacter& target)//an unexisting Materia, don’t do anything
 {
-	if (0 <= idx && idx < 4 && this->slot[idx] != NULL)
-		this->slot[idx]->use(target);
+	if (this->slot[idx])
+		this->slot[idx].use(target);
 }

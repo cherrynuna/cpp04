@@ -9,7 +9,7 @@
 class MateriaSource : public IMateriaSource
 {
 	private:
-		
+		AMateria	*slot[4];		
 	public:
 		MateriaSource(void);
 		MateriaSource(const MateriaSource& obj);
