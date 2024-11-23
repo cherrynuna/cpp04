@@ -13,29 +13,38 @@ Character::Character(const Character& obj) : ICharacter(obj)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		delete this->slot[i];//NULL이면 아무 동작 안함
-		this->slot[i] = obj.slot[i] ? obj.slot[i]->clone() : NULL;//if (obj.slot[i]) A B
+		// delete this->slot[i];//NULL이면 아무 동작 안함
+		// this->slot[i] = obj.slot[i] ? obj.slot[i]->clone() : NULL;//if (obj.slot[i]) A B
+		if (obj.slot[i])
+			this->slot[i] = obj.slot[i];
 	}
 }
 
 Character&	Character::operator=(const Character& obj)
 {
-	for (int i = 0; i < 4; i++)
+	if (this != &obj)
 	{
-		if (obj.slot[i]->getType() == "Ice")
-			this->slot[i] = new Ice();
-		else if (obj.slot[i]->getType() == "Cure")
+		for (int i = 0; i < 4; i++)
+		{
+			// if (obj.slot[i]->getType() == "Ice")
+			// 	this->slot[i] = new Ice();
+			// else if (obj.slot[i]->getType() == "Cure")
 
-		else
-			this->slot[i] = NULL;
+			// else
+			// 	this->slot[i] = NULL;
+			if (obj.slot[i])
+				this->slot[i] = obj.slot[i];
+		}
 	}
+	return (*this);
 }
 
 Character::~Character(void)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		delete this->slot[i];
+		// delete this->slot[i];
+		this->slot[i] = NULL;
 	}
 }
 
@@ -61,13 +70,12 @@ void	Character::equip(AMateria* m)//full inventory, don’t do anything
 
 void	Character::unequip(int idx)//an unexisting Materia, don’t do anything
 {
-	if (this->slot[idx])
-		this->slot[idx] = NULL;
-		//NOT delete the Materia, 주소 따로 저장하든가 해서 leak 막아라
+	if (0 <= idx && idx < 4 && this->slot[idx])
+		this->slot[idx] = NULL; //NOT delete the Materia, 주소 따로 저장하든가 해서 leak 막아라
 }
 
 void	Character::use(int idx, ICharacter& target)//an unexisting Materia, don’t do anything
 {
-	if (this->slot[idx])
-		this->slot[idx].use(target);
+	if (0 <= idx && idx < 4 && this->slot[idx])
+		this->slot[idx]->use(target);
 }

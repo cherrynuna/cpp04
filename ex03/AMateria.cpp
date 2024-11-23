@@ -27,3 +27,9 @@ std::string const&	AMateria::getType() const
 {
 	return (this->type);
 }
+
+void		AMateria::use(ICharacter& target)//얘는 왜 순수 가상 함수가 아니지
+{
+	(void)target;
+	std::cout << "why isn't this a pure virtual function?" << std::endl; 
+}

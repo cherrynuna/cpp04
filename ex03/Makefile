@@ -1,8 +1,8 @@
-SRCS	=	*.cpp
+SRCS	=	$(wildcard *.cpp)
 
 OBJS	=	${SRCS:.cpp=.o}
 
-CC		=	c++ -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
+CC		=	c++ -Wall -Wextra -Werror -std=c++98 #-g -fsanitize=address
 
 NAME	=	a.out
 

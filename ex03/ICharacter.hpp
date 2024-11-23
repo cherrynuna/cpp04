@@ -1,7 +1,11 @@
 #ifndef ICHARACTER_HPP
 # define ICHARACTER_HPP
 
-# include "AMateria.hpp"
+// # include "AMateria.hpp"
+# include <iostream>
+
+
+class AMateria;
 
 class ICharacter//순수가상함수와 가상 소멸자로 이루어진 클래스이며 구현부가 없다
 {

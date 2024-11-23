@@ -1,27 +1,35 @@
 #include "MateriaSource.hpp"
 #include "Character.hpp"
 
-int main()
+#include <cstdlib>
+void checkLeaks()
 {
-	IMateriaSource* src = new MateriaSource();
-	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
+	system("leaks a.out");
+}
 
-	ICharacter* me = new Character("me");
+int main(void)
+{
+	atexit(checkLeaks);
+	// IMateriaSource* src = new MateriaSource();
+	// src->learnMateria(new Ice());
+	// src->learnMateria(new Cure());
 
-	AMateria* tmp;
-	tmp = src->createMateria("ice");
-	me->equip(tmp);
-	tmp = src->createMateria("cure");
-	me->equip(tmp);
+	// ICharacter* me = new Character("me");
+
+	// AMateria* tmp;
+	// tmp = src->createMateria("ice");
+	// me->equip(tmp);
+	// tmp = src->createMateria("cure");
+	// me->equip(tmp);
 	
 	ICharacter* bob = new Character("bob");
-	me->use(0, *bob);
-	me->use(1, *bob);
+	// me->use(0, *bob);
+	// me->use(1, *bob);
 	
 	delete bob;
-	delete me;
-	delete src;
+	// delete me;
+	// delete src;
+	// delete tmp;
 
 	return 0;
 }

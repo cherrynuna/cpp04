@@ -1,7 +1,8 @@
 #ifndef CURE_HPP
 # define CURE_HPP
 
-# include "ICharacter.hpp"
+# include "AMateria.hpp"
+// # include "ICharacter.hpp"
 
 class Cure : public AMateria
 {
@@ -13,6 +14,6 @@ class Cure : public AMateria
 		
 		AMateria*	clone(void) const;//return a new instance of the same type
 		void	use(ICharacter& target);
-}
+};
 
 #endif
