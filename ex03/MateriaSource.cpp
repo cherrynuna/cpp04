@@ -42,6 +42,9 @@ MateriaSource::~MateriaSource(void)
 
 void	MateriaSource::learnMateria(AMateria* materia)
 {
+	if (!materia)
+		return ;
+	
 	int	idx = 0;
 
 	while (idx < 4)
@@ -51,11 +54,12 @@ void	MateriaSource::learnMateria(AMateria* materia)
 			if (materia->getType() != "ice" && materia->getType() != "cure")
 				;
 			else
-				this->slot[idx] = materia->clone();
+				this->slot[idx] = materia;
 			return ;
 		}
 		idx++;
 	}
+	delete materia;
 }
 
 AMateria*	MateriaSource::createMateria(std::string const& type)

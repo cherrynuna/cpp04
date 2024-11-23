@@ -55,6 +55,9 @@ std::string const&	Character::getName() const
 
 void	Character::equip(AMateria* m)//full inventory, don’t do anything
 {
+	if (!m)
+		return ;
+	
 	int	idx = 0;
 
 	while (idx < 4)
