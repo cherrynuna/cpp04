@@ -9,7 +9,7 @@ void checkLeaks()
 
 int main(void)
 {
-	// atexit(checkLeaks);
+	atexit(checkLeaks);
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
@@ -29,7 +29,6 @@ int main(void)
 	delete bob;
 	delete me;
 	delete src;
-	delete tmp;
 
 	return 0;
 }
