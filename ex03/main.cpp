@@ -40,7 +40,7 @@ int main(void)
 	delete bob;
 	delete me;
 	delete src;
-	delete tmp;
+	// delete tmp;
 
 	return 0;
 }

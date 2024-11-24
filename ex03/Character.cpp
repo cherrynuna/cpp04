@@ -37,7 +37,7 @@ Character::~Character(void)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		delete this->slot[i];
+		// delete this->slot[i];
 		this->slot[i] = NULL;
 	}
 }
@@ -58,11 +58,13 @@ void	Character::equip(AMateria* m)//full inventory, don’t do anything
 	{
 		if (this->slot[idx] == NULL)
 		{
-			this->slot[idx] = m->clone();//AMateria*에서 자식 클래스로
+			// this->slot[idx] = m->clone();//AMateria*에서 자식 클래스로
+			this->slot[idx] = m;
 			return;
 		}
 		idx++;
 	}
+	delete m;
 }
 
 void	Character::unequip(int idx)//an unexisting Materia, don’t do anything
@@ -73,6 +75,12 @@ void	Character::unequip(int idx)//an unexisting Materia, don’t do anything
 
 void	Character::use(int idx, ICharacter& target)//an unexisting Materia, don’t do anything
 {
-	if (0 <= idx && idx < 4 && this->slot[idx])
-		this->slot[idx]->use(target);
+	if (0 <= idx && idx < 4)
+	{
+		if (dynamic_cast<Ice*>(this->slot[idx]))
+			this->slot[idx]->use(target); // Ice의 use 호출
+		else if (dynamic_cast<Cure*>(this->slot[idx]))
+			this->slot[idx]->use(target); // Cure의 use 호출
+		// this->slot[idx]->use(target);
+	}
 }
