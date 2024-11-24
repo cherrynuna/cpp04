@@ -16,7 +16,9 @@ Character::Character(const Character& obj) : ICharacter(obj)
 		// delete this->slot[i];//NULL이면 아무 동작 안함
 		// this->slot[i] = obj.slot[i] ? obj.slot[i]->clone() : NULL;//if (obj.slot[i]) A B
 		if (obj.slot[i])
-			this->slot[i] = obj.slot[i];
+			this->slot[i] = obj.slot[i]->clone();
+		else
+			this->slot[i] = NULL;
 	}
 }
 
@@ -24,10 +26,14 @@ Character&	Character::operator=(const Character& obj)
 {
 	if (this != &obj)
 	{
+		this->name = obj.name;
 		for (int i = 0; i < 4; i++)
 		{
+			delete this->slot[i];
 			if (obj.slot[i])
-				this->slot[i] = obj.slot[i];
+				this->slot[i] = obj.slot[i]->clone();
+			else
+				this->slot[i] = NULL;
 		}
 	}
 	return (*this);
@@ -59,7 +65,7 @@ void	Character::equip(AMateria* m)//full inventory, don’t do anything
 		if (this->slot[idx] == NULL)
 		{
 			this->slot[idx] = m->clone();//AMateria*에서 자식 클래스로
-			return;
+			break;
 		}
 		idx++;
 	}
