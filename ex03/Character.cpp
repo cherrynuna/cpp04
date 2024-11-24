@@ -59,11 +59,10 @@ void	Character::equip(AMateria* m)//full inventory, don’t do anything
 		if (this->slot[idx] == NULL)
 		{
 			this->slot[idx] = m->clone();//AMateria*에서 자식 클래스로
-			break;
+			return;
 		}
 		idx++;
 	}
-	delete m;
 }
 
 void	Character::unequip(int idx)//an unexisting Materia, don’t do anything
