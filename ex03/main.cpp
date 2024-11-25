@@ -26,12 +26,14 @@ int main(void)
 	me->unequip(4);
 	me->unequip(5);
 	me->equip(tmp);
-	me->equip(tmp);
+	// me->equip(tmp);
+	delete tmp;
+	tmp = dynamic_cast<Character*>(me)->getSlot(0);
 	me->unequip(0);
-	//delete tmp;
+	delete tmp;
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
-	me->equip(tmp);
+	// me->equip(tmp);
 	// me->equip(tmp);
 	// me->equip(tmp);
 	// me->equip(tmp);

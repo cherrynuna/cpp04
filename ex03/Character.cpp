@@ -44,7 +44,6 @@ Character::~Character(void)
 	for (int i = 0; i < 4; i++)
 	{
 		delete this->slot[i];
-		this->slot[i] = NULL;
 	}
 }
 
@@ -52,6 +51,14 @@ std::string const&	Character::getName() const
 {
 	return (this->name);
 }
+
+AMateria*	Character::getSlot(int idx)
+{
+	if (0 <= idx && idx < 4)
+		return this->slot[idx];
+	return nullptr;
+}
+
 
 void	Character::equip(AMateria* m)//full inventory, don’t do anything
 {
@@ -69,6 +76,7 @@ void	Character::equip(AMateria* m)//full inventory, don’t do anything
 		}
 		idx++;
 	}
+	m = NULL;
 }
 
 void	Character::unequip(int idx)//an unexisting Materia, don’t do anything
