@@ -1,15 +1,8 @@
 #include "MateriaSource.hpp"
 #include "Character.hpp"
 
-#include <cstdlib>
-void checkLeaks()
-{
-	system("leaks a.out");
-}
-
 int main(void)
 {
-	atexit(checkLeaks);
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
@@ -20,23 +13,17 @@ int main(void)
 	tmp = src->createMateria("ice");
 
 	me->unequip(0);
-	me->unequip(1);
-	me->unequip(2);
-	me->unequip(3);
-	me->unequip(4);
 	me->unequip(5);
 	me->equip(tmp);
-	// me->equip(tmp);
 	delete tmp;
-	tmp = dynamic_cast<Character*>(me)->getSlot(0);
-	me->unequip(0);
-	delete tmp;
+
+	// tmp = dynamic_cast<Character*>(me)->getSlot(0);
+	// me->unequip(0);
+	// delete tmp;
+
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
-	// me->equip(tmp);
-	// me->equip(tmp);
-	// me->equip(tmp);
-	// me->equip(tmp);
+	me->equip(tmp);
 	
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);
@@ -45,7 +32,7 @@ int main(void)
 	delete bob;
 	delete me;
 	delete src;
-	// delete tmp;
+	delete tmp;
 
 	return 0;
 }

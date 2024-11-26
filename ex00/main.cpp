@@ -6,15 +6,8 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
-#include <cstdlib>
-void checkLeaks()
-{
-	system("leaks a.out");
-}
-
 int main()
 {
-	// atexit(checkLeaks);
 	const Animal*	meta = new Animal();//상위 클래스 포인터, std::vector<Animal*> zoo 이런 식으로 묶을수 있다=유연성,하위 클래스 객체를 다루는 다형성을 활용하는 동작, Dog에만 정의된 멤버에는 접근할 수 없다
 	const Animal*	j = new Dog();
 	const Animal*	i = new Cat();

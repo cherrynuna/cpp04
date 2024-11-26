@@ -2,6 +2,7 @@
 # define BRAIN_HPP
 
 # include <iostream>
+# include <cstdlib>
 
 class Brain
 {

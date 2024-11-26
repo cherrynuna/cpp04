@@ -4,15 +4,8 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
-#include <cstdlib>
-void checkLeaks()
-{
-	system("leaks a.out");
-}
-
 int main()
 {
-	// atexit(checkLeaks);
 	Animal	*meta[10];
 
 	for (int i = 0; i < 10; i++)

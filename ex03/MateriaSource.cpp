@@ -1,6 +1,6 @@
 #include "MateriaSource.hpp"
 
-MateriaSource::MateriaSource(void) : IMateriaSource()
+MateriaSource::MateriaSource(void)// : IMateriaSource()
 {
 	for (int i = 0; i < 4; ++i)
 	{
@@ -8,13 +8,9 @@ MateriaSource::MateriaSource(void) : IMateriaSource()
 	}
 }
 
-MateriaSource::MateriaSource(const MateriaSource& obj) : IMateriaSource(obj)
+MateriaSource::MateriaSource(const MateriaSource& obj)// : IMateriaSource(obj)
 {
-	for (int i = 0; i < 4; i++)
-	{
-		// delete this->slot[i];//NULL이면 아무 동작 안함
-		this->slot[i] = obj.slot[i] ? obj.slot[i]->clone() : NULL;//if (obj.slot[i]) A B
-	}
+	*this = obj;
 }
 
 MateriaSource&	MateriaSource::operator=(const MateriaSource& obj)
@@ -68,10 +64,10 @@ void	MateriaSource::learnMateria(AMateria* materia)
 
 AMateria*	MateriaSource::createMateria(std::string const& type)
 {
-	if (type == "ice")
-		return (new Ice());
-	else if (type == "cure")
-		return (new Cure());
-	else
-		return (0);
+	for (int i = 0; i < 4; i++)
+	{
+		if (type == this->slot[i]->getType())
+			return (this->slot[i]->clone());
+	}
+	return (0);
 }

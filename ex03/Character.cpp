@@ -1,6 +1,6 @@
 #include "Character.hpp"
 
-Character::Character(std::string name) : ICharacter()
+Character::Character(std::string name)// : ICharacter()
 {
 	this->name = name;
 	for (int i = 0; i < 4; ++i)
@@ -9,17 +9,9 @@ Character::Character(std::string name) : ICharacter()
 	}
 }
 
-Character::Character(const Character& obj) : ICharacter(obj)
+Character::Character(const Character& obj)// : ICharacter(obj)
 {
-	for (int i = 0; i < 4; i++)
-	{
-		// delete this->slot[i];//NULL이면 아무 동작 안함
-		// this->slot[i] = obj.slot[i] ? obj.slot[i]->clone() : NULL;//if (obj.slot[i]) A B
-		if (obj.slot[i])
-			this->slot[i] = obj.slot[i]->clone();
-		else
-			this->slot[i] = NULL;
-	}
+	*this = obj;
 }
 
 Character&	Character::operator=(const Character& obj)
@@ -29,11 +21,13 @@ Character&	Character::operator=(const Character& obj)
 		this->name = obj.name;
 		for (int i = 0; i < 4; i++)
 		{
-			delete this->slot[i];
-			if (obj.slot[i])
-				this->slot[i] = obj.slot[i]->clone();
-			else
+			if (obj.slot[i]->getType() != "ice" && obj.slot[i]->getType() != "cure")
 				this->slot[i] = NULL;
+			else
+			{
+				delete this->slot[i];
+				this->slot[i] = obj.slot[i]->clone();
+			}
 		}
 	}
 	return (*this);
@@ -56,7 +50,7 @@ AMateria*	Character::getSlot(int idx)
 {
 	if (0 <= idx && idx < 4)
 		return this->slot[idx];
-	return nullptr;
+	return NULL;
 }
 
 
